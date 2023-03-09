@@ -1,0 +1,67 @@
+                    
+
+import matplotlib.pyplot as plt
+from tensorflow.keras.models import Sequential, Model
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Activation, Input, GlobalAveragePooling2D
+from tensorflow.keras.datasets import cifar10
+from tensorflow.keras.preprocessing import image
+import warnings
+warnings.filterwarnings("ignore")
+%matplotlib inline
+
+                              data visualisation
+
+
+model = Sequential()
+model.add(Conv2D(input_shape = (32, 32, 3),
+                 filters =10, #we use it to remove all the noise from picture and here 10 means filtering by 10x10 matcrice
+                 kernel_size = (3, 3), #this is a dimension
+                 
+                 strides = (1, 1), #the step that we will jump or ignore. Here we will jump 1 by 1, ignore last row and colums only
+                 #strides = (2, 2),
+                 padding = "valid" #adding extra padding into main matrice. By default it is valid
+                ))
+
+model.output_shape
+
+model = Sequential()
+model.add(Conv2D(input_shape = (32, 32, 3),
+                 filters =10, #we use it to remove all the noise from picture and here 10 means filtering by 10x10 matcrice
+                 kernel_size = (3, 3), #this is a dimension
+                 
+                 strides = (1, 1), #the step that we will jump or ignore. Here we will jump 1 by 1, ignore last row and colums only
+                 #strides = (2, 2),
+                 padding = "same" 
+                ))
+
+model.output_shape
+
+
+
+
+
+
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+#first we make a canvas for visualization
+fig = plt.figure(figsize=(8, 6))
+
+for i in range(9):
+    #in a canvas there will be 3x3 matrice
+    fig.add_subplot(3, 3, i+1)
+    plt.imshow(x_train[i])
+    
+plt.show()
+
+
+model  = Sequential()
+model.add(Conv2D(input_shape = (32, 32, 3),
+                 filters =10, 
+                 kernel_size = (3, 3),
+                 strides = (1, 1),
+                 padding = "valid"
+                ))
+model.add(GlobalAveragePooling2D()) #ignore all the properties except filtering value
+model.output_shape
